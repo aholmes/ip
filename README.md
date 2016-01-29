@@ -1,2 +1,2 @@
 # ip
-Simple ASP.NET 5 application to return the clients IP address.
+Simple ASP.NET 5 application to return the client's IP address.
