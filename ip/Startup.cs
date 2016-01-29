@@ -15,17 +15,17 @@ namespace ip
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
-        {
-            app.UseIISPlatformHandler();
+		{
+			app.UseIISPlatformHandler();
 
-            app.Run(async context => await context.Response.WriteAsync(
-				// RemoteIpAddress may be null in some situations
-				// https://github.com/aspnet/IISIntegration/issues/17
-				context.Connection.RemoteIpAddress == null
-					? ""
-					: context.Connection.RemoteIpAddress.IsIPv4MappedToIPv6
-						? context.Connection.RemoteIpAddress.MapToIPv4().ToString()
-						: context.Connection.RemoteIpAddress.ToString()
+			app.Run(async context => await context.Response.WriteAsync(
+			// RemoteIpAddress may be null in some situations
+			// https://github.com/aspnet/IISIntegration/issues/17
+			context.Connection.RemoteIpAddress == null
+				? ""
+				: context.Connection.RemoteIpAddress.IsIPv4MappedToIPv6
+					? context.Connection.RemoteIpAddress.MapToIPv4().ToString()
+					: context.Connection.RemoteIpAddress.ToString()
 				)
 			);
         }
